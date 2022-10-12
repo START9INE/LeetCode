@@ -53,13 +53,22 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
  */
 var twoSum = function(nums, target) {
       //grab a num
-  for(let i = 0; i < nums.length; i++)
-    //comparing outside num to internal nums
-    for(let k = 0; k < nums.length; k++){
-      if(nums[i] + nums[k] === target & i != k){
-        return [i,k]
-      }
+ // for(let i = 0; i < nums.length; i++)
+ //   //comparing outside num to internal nums
+ //   for(let k = 0; k < nums.length; k++){
+ //     if(nums[i] + nums[k] === target & i != k){
+ //       return [i,k]
+ //     }
+ //   }
+    
+    	let dic = {}
+    for(let i = 0; i < nums.length; i++) {
+        if (target-nums[i] in dic) {
+            return [dic[target-nums[i]], i]
+        }
+        dic[nums[i]] = i
     }
-};console.log(findIndices([1,2,3,4,5], 9), '[3,4]')
-console.log(findIndices([5,6,9], 11), '[0,1]')
-console.log(findIndices([22,7,100,5], 12), '[1,3]')
+    
+};
+
+
